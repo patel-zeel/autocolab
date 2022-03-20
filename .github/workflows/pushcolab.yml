@@ -12,11 +12,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Set up Python 3.8
+    - name: Set up Python 3.6
       uses: actions/setup-python@v2
       with:
         # Semantic version range syntax or exact version of a Python version
-        python-version: '3.8'
+        python-version: '3.6'
     - name: install jupytext
       run: pip install jupytext
     - name: convert py to ipynb
@@ -25,4 +25,4 @@ jobs:
     - uses: mikeal/publish-to-github-action@master
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        BRANCH_NAME: 'main' #optional defaults to master
+        BRANCH_NAME: '' #optional defaults to master
