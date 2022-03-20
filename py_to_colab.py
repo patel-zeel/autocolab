@@ -4,10 +4,7 @@ import jupytext
 from glob import glob
 from nbformat.notebooknode import NotebookNode
 
-base_path = os.getcwd()
-scripts = glob(base_path + "/scripts/*.py")
-print("full path", base_path + "/scripts/*.py")
-print("scripts:", scripts)
+scripts = glob("scripts/*.py")
 
 
 def src_func(path):
@@ -15,12 +12,14 @@ def src_func(path):
 
 
 if not os.path.exists("notebooks"):
-    os.mkdir(base_path + "/notebooks")
+    os.mkdir("notebooks")
+else:
+    os.system("rm -rf notebooks/*")
 
 for script in scripts:
     content = jupytext.read(script)
 
-    new_file = script.replace("/scripts/", "/notebooks/")
+    new_file = script.replace("scripts/", "notebooks/")
     new_file = re.sub(r"\.py$", ".ipynb", new_file)
 
     src = [src_func(new_file)]
