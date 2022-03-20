@@ -7,9 +7,7 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python 3.6
@@ -22,7 +20,9 @@ jobs:
     - name: convert py to ipynb
       run: |
         python py_to_colab.py
-    - uses: mikeal/publish-to-github-action@master
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        BRANCH_NAME: '' #optional defaults to master
+    - uses: cedricbuild/gh-publish-branch@main
+      with:
+          github_repository: ${{ github.repository }}
+          branch: master
+          directory: notebooks
+          commit_message: "publish notebooks to branch"
