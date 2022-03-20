@@ -21,8 +21,8 @@ jobs:
       run: |
         python py_to_colab.py
     - name: Publish generated content to GitHub Pages
-        uses: tsunematsu21/actions-publish-gh-pages@v1.0.2
-        with:
-          dir: notebooks
-          branch: master
-          token: ${{ secrets.ACCESS_TOKEN }}
+      uses: tsunematsu21/actions-publish-gh-pages@v1.0.2
+      with:
+        dir: notebooks
+        branch: master
+        token: ${{ secrets.ACCESS_TOKEN }}
