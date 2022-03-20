@@ -5,7 +5,8 @@ from glob import glob
 from nbformat.notebooknode import NotebookNode
 base_path = os.getcwd()
 scripts = glob(base_path+"/scripts/*.py")
-
+print('full path', base_path+"/scripts/*.py")
+print('scripts:', scripts)
 def src_func(path):
     return f"<a href=\"https://colab.research.google.com/github/patel-zeel/autocolab/blob/main/{path}\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
 
