@@ -1,5 +1,4 @@
 import re
-from importlib_metadata import metadata
 import jupytext
 from glob import glob
 from nbformat.notebooknode import NotebookNode
