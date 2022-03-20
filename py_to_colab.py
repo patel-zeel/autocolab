@@ -1,3 +1,4 @@
+import os
 import re
 import jupytext
 from glob import glob
@@ -7,6 +8,9 @@ scripts = glob("scripts/*.py")
 
 def src_func(path):
     return f"<a href=\"https://colab.research.google.com/github/patel-zeel/autocolab/blob/main/{path}\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+
+if not os.path.exists('notebooks'):
+    os.mkdir('notebooks')
 
 for script in scripts:
     content = jupytext.read(script)
