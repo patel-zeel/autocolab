@@ -20,9 +20,9 @@ jobs:
     - name: convert py to ipynb
       run: |
         python py_to_colab.py
-    - uses: cedricbuild/gh-publish-branch@main
-      with:
-          github_repository: ${{ github.repository }}
+    - name: Publish generated content to GitHub Pages
+        uses: tsunematsu21/actions-publish-gh-pages@v1.0.2
+        with:
+          dir: notebooks
           branch: master
-          directory: notebooks
-          commit_message: "publish notebooks to branch"
+          token: ${{ secrets.ACCESS_TOKEN }}
