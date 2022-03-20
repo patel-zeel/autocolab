@@ -3,19 +3,19 @@ import re
 import jupytext
 from glob import glob
 from nbformat.notebooknode import NotebookNode
-
-scripts = glob("scripts/*.py")
+base_path = os.getcwd()
+scripts = glob(base_path+"/scripts/*.py")
 
 def src_func(path):
     return f"<a href=\"https://colab.research.google.com/github/patel-zeel/autocolab/blob/main/{path}\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
 
 if not os.path.exists('notebooks'):
-    os.mkdir('notebooks')
+    os.mkdir(base_path+"/notebooks")
 
 for script in scripts:
     content = jupytext.read(script)
     
-    new_file = script.replace("scripts", "notebooks")
+    new_file = script.replace("/scripts/", "/notebooks/")
     new_file = re.sub(r"\.py$", ".ipynb", new_file)
        
     src = [src_func(new_file)]
