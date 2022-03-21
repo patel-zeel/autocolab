@@ -25,6 +25,10 @@ for script in scripts:
     src = [src_func(new_file)]
     colab_cell = NotebookNode(cell_type="markdown", metadata=NotebookNode(), source=src)
     content["cells"].insert(0, colab_cell)
+    colab_cell = NotebookNode(
+        cell_type="markdown", metadata=NotebookNode(), source="# Title"
+    )
+    content["cells"].insert(0, colab_cell)
     # Write content to a jupyter notebook
     # Replace file extension with .ipynb using regular expression
     jupytext.write(content, new_file, fmt="ipynb")
