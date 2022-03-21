@@ -22,8 +22,8 @@ jobs:
         python py_to_colab.py
 
     - name: Build the book
-        run: |
-          jupyter-book build ./
+      run: |
+        jupyter-book build ./
       # Deploy the book's HTML to gh-pages branch
 
     - name: GitHub Pages action
