@@ -16,10 +16,22 @@ jobs:
         # Semantic version range syntax or exact version of a Python version
         python-version: '3.6'
     - name: install jupytext
-      run: pip install jupytext
+      run: pip install jupytext jupyter-book
     - name: convert py to ipynb
       run: |
         python py_to_colab.py
+
+    - name: Build the book
+        run: |
+          jupyter-book build ./
+      # Deploy the book's HTML to gh-pages branch
+
+    - name: GitHub Pages action
+      uses: peaceiris/actions-gh-pages@v3.6.1
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: _build/html
+
     - name: push
       uses: mikeal/publish-to-github-action@master
       env:

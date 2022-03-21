@@ -1,0 +1,6 @@
+format: jb-book
+root: intro
+parts:
+  - caption: Probability Basics
+    chapters:
+      - file: notebooks/iris_plot.ipynb
